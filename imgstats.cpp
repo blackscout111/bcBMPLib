@@ -52,7 +52,13 @@ int main()
 	img_asDbl = new matrix<double> [nlayers];
 	for (int n = 0; n < nlayers; n++)
 	{
-		img_asDbl[n] = img[n];
+		for (_DIM row = 0; row < img[n].height(); row++)
+		{
+			for (_DIM col = 0; col < img[n].width(); col++)
+			{
+				img_asDbl[n](row,col) = img[n](row,col);
+			}
+		}
 	}
 
 	// Allocate memory for image statistics
@@ -86,7 +92,7 @@ int main()
 	{
 		max[n] = max2d(img_asDbl[n]);
 		min[n] = min2d(img_asDbl[n]);
-		range[n] = max_asDbl[n] - mean_asDbl[n];
+		range[n] = max[n] - min[n];
 		mean[n] = mean2d(img_asDbl[n]);
 		stdev[n] = stdev2d(img_asDbl[n], 0);
 		std_err[n] = stdev[n]/
@@ -122,6 +128,9 @@ int main()
 	delete[] stdev_divRange;
 	delete[] stdev_divMean;
 
+	// Pause program before termination
+	printf("Press <Enter> to continue...\n");
+	cin.get();
 
 	return 0;
 }

@@ -16,8 +16,6 @@ using namespace std;
 
 class makeBMPObj
 {
-	friend makeBMPObj_FRIEND;
-
 	public:
 		// Checks to see that the number of layers is 1, 3, or 4, and that all
 		// of the layers have the same dimensions
@@ -143,7 +141,7 @@ void makeBMPObj::writeBMPdata(matrix<int>* image,
 		int bufpos = 0;
 
 		// Fills buffer with column data (left to right)
-		for (int col = 0; col < dibHdr.width; col++)
+		for (unsigned int col = 0; col < dibHdr.width; col++)
 		{
 			// Fills buffer with layer data deepest to
 			// shallowest

@@ -7,7 +7,7 @@
 #include <fstream>
 #include <string>
 
-#include "bmp_headers/bmp_headers.h"
+#include "bmp_headers.h"
 #include "readBMPObj.h"
 #include "makeBMPObj.h"
 #include "matrix.h"
