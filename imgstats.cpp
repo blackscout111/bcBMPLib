@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include "../matrix/matrixmath.h"
+#include "matrixmath.h"
 #include "bcBMPLib.h"
 
 using namespace std;

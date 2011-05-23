@@ -5,7 +5,7 @@
 #include <iomanip>
 #include <string>
 
-#include "../bcBMPLib/bcBMPLib.h"
+#include "bcBMPLib.h"
 
 using namespace std;
 

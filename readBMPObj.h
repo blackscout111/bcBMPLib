@@ -7,9 +7,9 @@
 #include <fstream>
 #include <string>
 
-#include "bmp_headers/dibv3.h"
-#include "bmp_headers/bmpHdr.h"
-#include "../matrix/matrix.h"
+#include "dibv3.h"
+#include "bmpHdr.h"
+#include "matrix.h"
 
 using namespace std;
 

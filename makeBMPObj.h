@@ -8,8 +8,8 @@
 #include <cstdlib>
 #include <cstring>
 
-#include "bmp_headers/bmp_headers.h"
-#include "../matrix/matrix.h"
+#include "bmp_headers.h"
+#include "matrix.h"
 
 
 using namespace std;

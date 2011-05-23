@@ -6,8 +6,8 @@
 #include <cstdlib>
 #include <cstring>
 
-#include "../myIsOpen.h"
-#include "../bcBMPLib/bcBMPLib.h"
+#include "myIsOpen.h"
+#include "bcBMPLib.h"
 
 using namespace std;
 

@@ -10,7 +10,7 @@
 #include "bmp_headers/bmp_headers.h"
 #include "readBMPObj.h"
 #include "makeBMPObj.h"
-#include "../matrix/matrix.h"
+#include "matrix.h"
 
 using namespace std;
 
