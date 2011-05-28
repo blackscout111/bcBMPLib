@@ -46,12 +46,15 @@ int main()
 			<< endl;
 
 	// Read in image and display header information
+	printf("\nreading in image...\n\n");
 	nlayers = readBMP(img, img_name, 1);
 
 	// Copy image as a matrix of doubles
+	printf("copying image as matrix of doubles\n");
 	img_asDbl = new matrix<double> [nlayers];
 	for (int n = 0; n < nlayers; n++)
 	{
+		img_asDbl[n].grow(img[n].height() - 1, 0, img[n].width() - 1, 0);
 		for (_DIM row = 0; row < img[n].height(); row++)
 		{
 			for (_DIM col = 0; col < img[n].width(); col++)
@@ -59,7 +62,13 @@ int main()
 				img_asDbl[n](row,col) = img[n](row,col);
 			}
 		}
+
+		// Free memeory for img[n]
+		delete &img[n];
 	}
+
+	// Free memory for img
+//	delete[] img;
 
 	// Allocate memory for image statistics
 	max = new double [nlayers];
@@ -90,35 +99,52 @@ int main()
 	// Calculate and display layer statistics
 	for (int n = 0; n < nlayers; n++)
 	{
-		max[n] = max2d(img_asDbl[n]);
-		min[n] = min2d(img_asDbl[n]);
-		range[n] = max[n] - min[n];
-		mean[n] = mean2d(img_asDbl[n]);
-		stdev[n] = stdev2d(img_asDbl[n], 0);
-		std_err[n] = stdev[n]/
-			sqrt((double)(img_asDbl[n].height()*img_asDbl[n].width()));
-		stdev_divRange[n] = stdev[n]/range[n];
-		stdev_divMean[n] = stdev[n]/mean[n];
-
 		cout	<< "==================="
 				<< endl
 				<< layerNamePtr[n]
 				<< " Layer"
 				<< endl
 				<< "==================="
-				<< endl
-				<< "Max:                " << max[n] << endl 
-				<< "Min:                " << min[n] << endl
-				<< "Range:              " << range[n] << endl
-				<< "Mean:               " << mean[n] << endl
-				<< "Standard Deviation: " << stdev[n] << endl
-				<< "Standard Error:     " << std_err[n] << endl
-				<< "StDev/Range:        " << stdev_divRange[n] << endl
-				<< "StDev/Mean:         " << stdev_divMean[n] << endl
 				<< endl;
+
+		cout << "Max:                ";
+		max[n] = max2d(img_asDbl[n]);
+		cout << max[n] << endl;
+
+		cout << "Min:                ";
+		min[n] = min2d(img_asDbl[n]);
+		cout << min[n] << endl;
+
+		cout << "Range:              ";
+		range[n] = max[n] - min[n];
+		cout << range[n] << endl;
+
+		cout << "Mean:               ";
+		mean[n] = mean2d(img_asDbl[n]);
+		cout << mean[n] << endl;
+
+		cout	<< "Standard Deviation: ";
+		stdev[n] = stdev2d(img_asDbl[n], 0);
+		cout << stdev[n] << endl;
+
+		cout	<< "Standard Error:     ";
+		std_err[n] = stdev[n]/
+			sqrt((double)(img_asDbl[n].height()*img_asDbl[n].width()));
+		cout << std_err[n] << endl;
+
+		cout	<< "StDev/Range:        ";
+		stdev_divRange[n] = stdev[n]/range[n];
+		cout << stdev_divRange[n] << endl;
+
+		cout	<< "StDev/Mean:         ";
+		stdev_divMean[n] = stdev[n]/mean[n];
+		cout << stdev_divMean[n] << endl << endl;
 	}
 
-	// Free memory of image statistic variables
+	// Free memory for img_asDbl
+	delete[] img_asDbl;
+
+	// Free memory for image statistic variables
 	delete[] max;
 	delete[] min;
 	delete[] range;
@@ -127,10 +153,6 @@ int main()
 	delete[] std_err;
 	delete[] stdev_divRange;
 	delete[] stdev_divMean;
-
-	// Pause program before termination
-	printf("Press <Enter> to continue...\n");
-	cin.get();
 
 	return 0;
 }
