@@ -6,7 +6,6 @@
 #include <cstdlib>
 #include <cstring>
 
-#include "myIsOpen.h"
 #include "bcBMPLib.h"
 
 using namespace std;
@@ -108,7 +107,11 @@ void readLayerData(matrix<int>& data, const string& file_name)
 
 	// Open data_file and check to see if it is open	
 	file.open(file_name.c_str());
-	myIsOpen(file,file_name);
+	if (!file.is_open())
+	{
+		cout << "ERROR: Unable to open " << file_name << endl;
+		exit(EXIT_FAILURE);
+	}
 
 	// Get the number of rows
 	file >> numRows;
