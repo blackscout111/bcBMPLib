@@ -132,5 +132,5 @@ int main()
 	printf("Press <Enter> to continue...\n");
 	cin.get();
 
-	return 0;
+	return EXIT_SUCCESS;
 }

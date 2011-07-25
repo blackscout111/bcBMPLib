@@ -43,7 +43,7 @@ int main()
 	cin		>> image_name;
 	cout	<< endl;
 
-	// Reads in image form file
+	// Reads in image from file
 	numLayers = readBMP(image,image_name,1);
 
 	// Allocates memory for output file streams
@@ -81,7 +81,7 @@ int main()
 		cout << "Press <ENTER> to terminate the program...";
 		cin.get();
 		cin.get();
-		exit(-1);
+		exit(EXIT_FAILURE);
 	}
 
 
@@ -89,8 +89,8 @@ int main()
 	for (int layer = 0; layer < numLayers; layer++)
 	{
 		// Writes dimensions of image to file(s)
-		txt_file[layer] << image[layer].height() << "\t"
-				<< image[layer].width() << "\r\n";
+		txt_file[layer]	<< image[layer].height() << "\t"
+						<< image[layer].width() << "\r\n";
 
 		// Writes data of image layers to file(s)
 		for (int row = 0; row < image[layer].height(); row++)
@@ -112,5 +112,5 @@ int main()
 	cin.get();
 	cin.get();
 
-	return 0;
+	return EXIT_SUCCESS;
 }

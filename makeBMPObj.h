@@ -59,7 +59,7 @@ void makeBMPObj::checkLayerNumAndDim(matrix<int>* image, int numLayers)
 				<< ") not allowed"
 				<< endl << endl;
 
-		exit(-1);
+		exit(EXIT_FAILURE);
 	}
 
 
@@ -79,7 +79,7 @@ void makeBMPObj::checkLayerNumAndDim(matrix<int>* image, int numLayers)
 					<< "Dimension mismatch"
 					<< endl << endl;
 
-			exit(-1);
+			exit(EXIT_FAILURE);
 		}
 	}
 }

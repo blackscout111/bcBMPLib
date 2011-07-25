@@ -75,7 +75,7 @@ void makeBMP(matrix<int>* image, int numLayers, string image_name)
 			ios::out | ios::binary | ios::app);
 	if (!image_file.is_open())
 		{
-			cout	<< endl
+			cerr	<< endl
 					<< "bcBMPLib.h: In function "
 					<< "'int makeBMP(matrix<int>* image, int numLayers, "
 					<< "string image_name)'"
@@ -86,7 +86,7 @@ void makeBMP(matrix<int>* image, int numLayers, string image_name)
 					<< image_name 
 					<< endl << endl;
 
-			exit(-1);
+			std::exit(EXIT_FAILURE);
 		}	
 
 	// Writes bitmap file info header to image file
@@ -146,7 +146,7 @@ int readBMP(matrix<int>*& image, string image_name, unsigned char disp= 0)
 	if ((disp != 0) && (disp != 1))
 	{
 		// Display error message and terminates the program
-		cout	<< endl
+		cerr	<< endl
 				<< "bcBMPLib.h: In function "
 				<< "'int readBMP(matrix<int>*& image, string image_name, "
 				<< "unsigned char disp= 0)'"
@@ -157,8 +157,8 @@ int readBMP(matrix<int>*& image, string image_name, unsigned char disp= 0)
 				<< "disp can be 0 or 1"
 				<< endl << endl;
 
-		// Exits program returning the value '-1'
-		exit(-1);
+		// Exits program
+		std::exit(EXIT_FAILURE);
 	}	
 
 	// Opens bmp file in binary mode and checks to see if it is open
@@ -166,7 +166,7 @@ int readBMP(matrix<int>*& image, string image_name, unsigned char disp= 0)
 			ios::in | ios::binary);
 	if (!image_file.is_open())
 		{
-			cout	<< endl
+			cerr	<< endl
 					<< "bcBMPLib.h: In function "
 					<< "'int readBMP(matrix<int>*& image, string image_name, "
 					<< "unsigned char disp= 0)'"
@@ -176,7 +176,7 @@ int readBMP(matrix<int>*& image, string image_name, unsigned char disp= 0)
 					<< image_name 
 					<< endl << endl;
 
-			exit(-1);
+			std::exit(EXIT_FAILURE);
 		}	
 	
 	// Reads in file header information

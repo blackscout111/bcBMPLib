@@ -185,7 +185,7 @@ void readBMPObj::readBMPHdrInfo(int& width,
 		default:
 
 			// Display error message
-			cout	<< endl
+			cerr	<< endl
 					<< "bcBMPLib.h: In function "
 					<< "'int readBMP(matrix<int>*& image, string image_name, "
 					<< "unsigned char disp= 0)'"
@@ -197,7 +197,7 @@ void readBMPObj::readBMPHdrInfo(int& width,
 
 			image_file.close();
 
-			exit(-1);
+			std::exit(EXIT_FAILURE);
 	}
 }
 
@@ -854,7 +854,7 @@ matrix<int>* readBMPObj::readPxlData(int width,
 
 		default:
 			// Display error message
-			cout	<< endl
+			cerr	<< endl
 					<< "bcBMPLib.h: In function "
 					<< "'int readBMP(matrix<int>*& image, string image_name, "
 					<< "unsigned char disp= 0)'"
@@ -876,7 +876,7 @@ matrix<int>* readBMPObj::readPxlData(int width,
 			delete[] image;
 
 			// Terminates the program
-			exit(-1);
+			std::exit(EXIT_FAILURE);
 	}
 
 	// Frees palette memory if necessary
