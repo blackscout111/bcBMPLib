@@ -44,7 +44,7 @@ int main()
 	cout	<< endl;
 
 	// Reads in image from file
-	numLayers = readBMP(image,image_name,1);
+	numLayers = bcBMPLib::readBMP(image,image_name,true);
 
 	// Allocates memory for output file streams
 	txt_file = new ofstream [numLayers];

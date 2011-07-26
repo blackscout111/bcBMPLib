@@ -37,7 +37,7 @@ class readBMPObj
 							int& bitspp,
 							ifstream& image_file,
 							int& plength,
-							unsigned char disp);
+							bool disp= false);
 
 		// Reads in color palette and returns the needed number of layers
 		// *** Only call this function after calling readBMPHdrInfo(...)
@@ -133,7 +133,7 @@ void readBMPObj::readBMPHdrInfo(int& width,
 								int& bitspp,
 								ifstream& image_file,
 								int& plength,
-								unsigned char disp)
+								bool disp)
 {
 	// File info header
 	bmpHdr	hdr;
@@ -145,7 +145,7 @@ void readBMPObj::readBMPHdrInfo(int& width,
 	hdr.readData(image_file);
 
 	// Prints the file info header
-	if (disp == 1)
+	if (disp)
 	{
 		hdr.print();
 		cout << endl;
@@ -164,7 +164,7 @@ void readBMPObj::readBMPHdrInfo(int& width,
 			((dibv3*)dibHdrPtr)->readData(image_file);
 
 			// Print DIB header data
-			if (disp == 1)
+			if (disp)
 			{
 				((dibv3*)dibHdrPtr)->print();
 				cout << endl;
@@ -188,7 +188,7 @@ void readBMPObj::readBMPHdrInfo(int& width,
 			cerr	<< endl
 					<< "bcBMPLib.h: In function "
 					<< "'int readBMP(matrix<int>*& image, string image_name, "
-					<< "unsigned char disp= 0)'"
+					<< "bool disp= false)'"
 					<< endl
 					<< "bcBMPLib.h: error: "
 					<< "DIB header version not supported (size= "
@@ -198,6 +198,8 @@ void readBMPObj::readBMPHdrInfo(int& width,
 			image_file.close();
 
 			std::exit(EXIT_FAILURE);
+
+			break;
 	}
 }
 
@@ -266,7 +268,7 @@ int readBMPObj::getNumLayers(int bitspp,
 			cout	<< endl
 					<< "bcBMPLib.h: In function "
 					<< "'int readBMP(matrix<int>*& image, string image_name, "
-					<< "unsigned char disp= 0)'"
+					<< "bool disp= false)'"
 					<< endl
 					<< "bcBMPLib.h: error: "
 					<< "WARNING: Unnecessary color palette"
@@ -319,7 +321,7 @@ int readBMPObj::getNumLayers(int bitspp,
 			cout	<< endl
 					<< "bcBMPLib.h: In function "
 					<< "'int readBMP(matrix<int>*& image, string image_name, "
-					<< "unsigned char disp= 0)'"
+					<< "bool disp= false)'"
 					<< endl
 					<< "bcBMPLib.h: error: "
 					<< "Bitdepth out of range"
@@ -398,7 +400,7 @@ void readBMPObj::fromBuff2Img1(int width,
 					cout	<< endl
 							<< "bcBMPLib.h: In function "
 							<< "'int readBMP(matrix<int>*& image, string "
-							<< "image_name, unsigned char disp= 0)'"
+							<< "image_name, bool disp= false)'"
 							<< endl
 							<< "bcBMPLib.h: error: "
 							<< "Pixel value out of palette range, using 0"
@@ -480,8 +482,8 @@ void readBMPObj::fromBuff2Img2(int width,
 				{
 					cout	<< endl
 							<< "bcBMPLib.h: In function "
-							<< "'int readBMP(matrix<int>*& image, string"
-							<< " image_name, unsigned char disp= 0)'"
+							<< "'int readBMP(matrix<int>*& image, string "
+							<< "image_name, bool disp= false)'"
 							<< endl
 							<< "bcBMPLib.h: error: "
 							<< "Pixel value out of palette range, using 0"
@@ -564,7 +566,7 @@ void readBMPObj::fromBuff2Img4(int width,
 					cout	<< endl
 							<< "bcBMPLib.h: In function "
 							<< "'int readBMP(matrix<int>*& image, string "
-							<< "image_name, unsigned char disp= 0)'"
+							<< "image_name, bool disp= false)'"
 							<< endl
 							<< "bcBMPLib.h: error: "
 							<< "Pixel value out of palette range, using 0"
@@ -637,7 +639,7 @@ void readBMPObj::fromBuff2Img8(int width,
 				cout	<< endl
 						<< "bcBMPLib.h: In function "
 						<< "'int readBMP(matrix<int>*& image, string "
-						<< "image_name, unsigned char disp= 0)'"
+						<< "image_name, bool disp=false)'"
 						<< endl
 						<< "bcBMPLib.h: error: "
 						<< "Pixel value out of palette range, using 0"
@@ -857,7 +859,7 @@ matrix<int>* readBMPObj::readPxlData(int width,
 			cerr	<< endl
 					<< "bcBMPLib.h: In function "
 					<< "'int readBMP(matrix<int>*& image, string image_name, "
-					<< "unsigned char disp= 0)'"
+					<< "bool disp= false)'"
 					<< endl
 					<< "bcBMPLib.h: error: "
 
@@ -877,6 +879,8 @@ matrix<int>* readBMPObj::readPxlData(int width,
 
 			// Terminates the program
 			std::exit(EXIT_FAILURE);
+
+			break;
 	}
 
 	// Frees palette memory if necessary

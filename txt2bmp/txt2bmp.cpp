@@ -82,7 +82,7 @@ int main()
 	}
 
 	// Makes and saves image
-	makeBMP(image, numLayers, image_name);
+	bcBMPLib::makeBMP(image, numLayers, image_name);
 
 	// Pauses console before closing
 	cout << "Press <ENTER> to continue...";
