@@ -2,6 +2,8 @@
 #define bmpHdr_h
 
 #include <iostream>
+#include <cstdio>
+#include <cstdlib>
 
 using namespace std;
 
@@ -88,7 +90,7 @@ void bmpHdr::dataReset()
 
 	// Adds fileSize to data
 	tempPtr = (char*)(&fileSize);
-	for (int i = 0; i < sizeof(fileSize); i++)
+	for (size_t i = 0; i < sizeof(fileSize); i++)
 	{
 		data[index] = tempPtr[i];
 		index++;
@@ -96,7 +98,7 @@ void bmpHdr::dataReset()
 	
 	// Adds reserved to data
 	tempPtr = (char*)(reserved);
-	for (int i = 0; i < sizeof(reserved); i++)
+	for (size_t i = 0; i < sizeof(reserved); i++)
 	{
 		data[index] = tempPtr[i];
 		index++;
@@ -104,7 +106,7 @@ void bmpHdr::dataReset()
 
 	// Adds offset to data
 	tempPtr = (char*)(&offset);
-	for (int i = 0; i < sizeof(offset); i++)
+	for (size_t i = 0; i < sizeof(offset); i++)
 	{
 		data[index] = tempPtr[i];
 		index++;

@@ -81,7 +81,7 @@ void dibv3::dataReset()
 
 	// Adds headerSize to data
 	tempPtr = (char*)(&headerSize);
-	for (int i = 0; i < sizeof(headerSize); i++)
+	for (size_t i = 0; i < sizeof(headerSize); i++)
 	{
 		data[index] = tempPtr[i];
 		index++;
@@ -89,7 +89,7 @@ void dibv3::dataReset()
 	
 	// Adds width to data
 	tempPtr = (char*)(&width);
-	for (int i = 0; i < sizeof(width); i++)
+	for (size_t i = 0; i < sizeof(width); i++)
 	{
 		data[index] = tempPtr[i];
 		index++;
@@ -97,7 +97,7 @@ void dibv3::dataReset()
 
 	// Adds height to data
 	tempPtr = (char*)(&height);
-	for (int i = 0; i < sizeof(height); i++)
+	for (size_t i = 0; i < sizeof(height); i++)
 	{
 		data[index] = tempPtr[i];
 		index++;
@@ -105,7 +105,7 @@ void dibv3::dataReset()
 	
 	// Adds numColorPlanes to data
 	tempPtr = (char*)(&numColorPlanes);
-	for (int i = 0; i < sizeof(numColorPlanes); i++)
+	for (size_t i = 0; i < sizeof(numColorPlanes); i++)
 	{
 		data[index] = tempPtr[i];
 		index++;
@@ -113,7 +113,7 @@ void dibv3::dataReset()
 
 	// Adds numBitsPerPixel to data
 	tempPtr = (char*)(&numBitsPerPixel);
-	for (int i = 0; i < sizeof(numBitsPerPixel); i++)
+	for (size_t i = 0; i < sizeof(numBitsPerPixel); i++)
 	{
 		data[index] = tempPtr[i];
 		index++;
@@ -121,7 +121,7 @@ void dibv3::dataReset()
 	
 	// Adds compressionType to data
 	tempPtr = (char*)(&compressionType);
-	for (int i = 0; i < sizeof(compressionType); i++)
+	for (size_t i = 0; i < sizeof(compressionType); i++)
 	{
 		data[index] = tempPtr[i];
 		index++;
@@ -129,7 +129,7 @@ void dibv3::dataReset()
 
 	// Adds rawDataSize to data
 	tempPtr = (char*)(&rawDataSize);
-	for (int i = 0; i < sizeof(rawDataSize); i++)
+	for (size_t i = 0; i < sizeof(rawDataSize); i++)
 	{
 		data[index] = tempPtr[i];
 		index++;
@@ -137,7 +137,7 @@ void dibv3::dataReset()
 	
 	// Adds horizontalRes to data
 	tempPtr = (char*)(&horizontalRes);
-	for (int i = 0; i < sizeof(horizontalRes); i++)
+	for (size_t i = 0; i < sizeof(horizontalRes); i++)
 	{
 		data[index] = tempPtr[i];
 		index++;
@@ -145,7 +145,7 @@ void dibv3::dataReset()
 
 	// Adds verticalRes to data
 	tempPtr = (char*)(&verticalRes);
-	for (int i = 0; i < sizeof(verticalRes); i++)
+	for (size_t i = 0; i < sizeof(verticalRes); i++)
 	{
 		data[index] = tempPtr[i];
 		index++;
@@ -153,7 +153,7 @@ void dibv3::dataReset()
 
 	// Adds numPaletteColors to data
 	tempPtr = (char*)(&numPaletteColors);
-	for (int i = 0; i < sizeof(numPaletteColors); i++)
+	for (size_t i = 0; i < sizeof(numPaletteColors); i++)
 	{
 		data[index] = tempPtr[i];
 		index++;
@@ -161,7 +161,7 @@ void dibv3::dataReset()
 
 	// Adds numImportantColors to data
 	tempPtr = (char*)(&numImportantColors);
-	for (int i = 0; i < sizeof(numImportantColors); i++)
+	for (size_t i = 0; i < sizeof(numImportantColors); i++)
 	{
 		data[index] = tempPtr[i];
 		index++;

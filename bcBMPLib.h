@@ -11,6 +11,7 @@
 #include "readBMPObj.h"
 #include "makeBMPObj.h"
 #include "matrix.h"
+#include "matrixmath.h"
 
 using namespace std;
 
@@ -20,6 +21,10 @@ using namespace std;
 ////////////////////////////////////////////////////////////////////////////////
 namespace bcBMPLib
 {
+
+//______________________________________________________________________________
+// Important typdefs
+typedef unsigned char byte;	// To write to the files we need a byte class
 
 //______________________________________________________________________________
 // Creates a Bitmap image with data contained in an array of matrices. The
@@ -33,7 +38,7 @@ namespace bcBMPLib
 // -	If the number of layers is 4, the image created will be a RGB with a
 //		bitdepth of 32.  The red, green, blue, and alpha layers will be created
 // 		from the 0th,1st, and 2nd indexed matrices in the array respectively.
-void makeBMP(matrix<int>* image, int numLayers, string image_name)
+void makeBMP(matrix<int>* image, size_t numLayers, string image_name)
 {
 	// BMP reading object that contains important functions
 	makeBMPObj makeObj;
@@ -149,7 +154,7 @@ int readBMP(matrix<int>*& image, string image_name, bool disp= false)
 	// The number of required image layers
 	// (1 for a black and white image, 3 for a color, 4 for color with
 	// transparency)
-	int	numLayers = 0;
+	size_t	numLayers = 0;
 
 	// Checks to see if the value of disp is allowed
 	if ((disp != 0) && (disp != 1))

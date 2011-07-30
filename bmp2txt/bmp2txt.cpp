@@ -27,7 +27,7 @@ int main()
 	// The number of required image layers
 	// (1 for a black and white image, 3 for a color, 4 for color with
 	// transparency)
-	int	numLayers = 0;
+	size_t	numLayers = 0;
 
 	// Text file stream
 	ofstream	*txt_file;
@@ -86,16 +86,16 @@ int main()
 
 
 	// Writes data to output file(s)
-	for (int layer = 0; layer < numLayers; layer++)
+	for (size_t layer = 0; layer < numLayers; layer++)
 	{
 		// Writes dimensions of image to file(s)
 		txt_file[layer]	<< image[layer].height() << "\t"
 						<< image[layer].width() << "\r\n";
 
 		// Writes data of image layers to file(s)
-		for (int row = 0; row < image[layer].height(); row++)
+		for (size_t row = 0; row < image[layer].height(); row++)
 		{
-			for (int col = 0; col < image[layer].width(); col++)
+			for (size_t col = 0; col < image[layer].width(); col++)
 			{
 				txt_file[layer] << setw(4) << image[layer](row,col);
 			}

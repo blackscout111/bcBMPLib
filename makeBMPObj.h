@@ -19,7 +19,7 @@ class makeBMPObj
 	public:
 		// Checks to see that the number of layers is 1, 3, or 4, and that all
 		// of the layers have the same dimensions
-		void checkLayerNumAndDim(matrix<int>* image, int numLayers);
+		void checkLayerNumAndDim(matrix<int>* image, size_t numLayers);
 
 		// Initializes and fills the color pallet
 		char* fillColorPalette(int& paletteSize, dibv3& dibHdr);
@@ -37,7 +37,7 @@ class makeBMPObj
 ////////////////////////////////////////////////////////////////////////////////
 
 //______________________________________________________________________________
-void makeBMPObj::checkLayerNumAndDim(matrix<int>* image, int numLayers)
+void makeBMPObj::checkLayerNumAndDim(matrix<int>* image, size_t numLayers)
 {
 	// Check layer number
 	if ((numLayers == 1) || (numLayers == 3) || (numLayers == 4))
@@ -64,7 +64,7 @@ void makeBMPObj::checkLayerNumAndDim(matrix<int>* image, int numLayers)
 
 
 	// Check layer dimensions
-	for (char i = 0; i < numLayers; i++)
+	for (size_t i = 0; i < numLayers; i++)
 	{
 		if (image[i].height() != image[0].height() ||
 			image[i].width() != image[0].width())

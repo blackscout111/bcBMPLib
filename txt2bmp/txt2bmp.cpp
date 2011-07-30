@@ -24,19 +24,19 @@ int main()
 	matrix <int>	*image;
 
 	// Number of layers to the image
-	int	numLayers;
+	size_t	numLayers;
 
 	// Array of layer data file names
 	string	*layerName;
 
 	// Prompts the user for the number of image layers	
 	cout	<< "======================================================="
-		<< endl
-		<< "Enter the nuber of image layers: ";
+			<< endl
+			<< "Enter the number of image layers: ";
 
 	cin	>> numLayers;
 
-	cout	<< endl;
+	cout << endl;
 
 
 	// Prompts the user for the names of the data files containing
@@ -48,7 +48,7 @@ int main()
 
 		// Gets layer names
 		cout	<< "Enter layer file names" << endl;
-		for (int i = 0; i < numLayers; i++)
+		for (size_t i = 0; i < numLayers; i++)
 		{
 			cin >> layerName[i];
 		}
@@ -75,7 +75,7 @@ int main()
 
 
 	// Reads in layer data
-	for (int i = 0; i < numLayers; i++)
+	for (size_t i = 0; i < numLayers; i++)
 	{
 		// Reads in data
 		readLayerData(image[i],layerName[i]);
@@ -99,8 +99,8 @@ int main()
 void readLayerData(matrix<int>& data, const string& file_name)
 {
 	// Number of rows and columns of the image data
-	int	numRows = 0,
-		numCols = 0;
+	size_t	numRows = 0,
+			numCols = 0;
 
 	// Data file variable
 	ifstream file;
@@ -132,9 +132,9 @@ void readLayerData(matrix<int>& data, const string& file_name)
 	}
 
 	// Reads in data from file
-	for (int r = 0; r < data.height(); r++)
+	for (size_t r = 0; r < data.height(); r++)
 	{
-		for (int c = 0; c < data.width(); c++)
+		for (size_t c = 0; c < data.width(); c++)
 		{
 			file >> data(r,c);
 		}
