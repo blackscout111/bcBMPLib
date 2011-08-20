@@ -23,10 +23,6 @@ namespace bcBMPLib
 {
 
 //______________________________________________________________________________
-// Important typdefs
-typedef unsigned char byte;	// To write to the files we need a byte class
-
-//______________________________________________________________________________
 // Creates a Bitmap image with data contained in an array of matrices. The
 // number of layers, 'numLayers' should be equal to 1,3, or 4.
 // 
