@@ -2,8 +2,8 @@
 README: bcBMPLib
 ################################################################################
 
-This is a library used for creating and reading in .BMP files.  It is still
-under heavy development.
+This is an experimental library used for creating and reading in .BMP files. It
+was made only for my own learning about image files.
 
 "imgstats.cpp" is a usefull program that calculates statistics of .BMP files and
 displays them in a consol window.
